@@ -1,0 +1,64 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  background: red;
+}
+
+.viewport {
+  width: 100%;
+  height: 100%;
+  padding: 100px 0 100px 0;
+  background: blue;
+  -webkit-box-sizing: padding-box;
+  -moz-box-sizing: padding-box;
+  box-sizing: padding-box;
+}
+.viewport .header, .viewport .footer {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background: gray;
+  z-index: 2;
+}
+.viewport .header {
+  top: 0;
+}
+.viewport .footer {
+  bottom: 0;
+}
+.viewport .map_holder {
+  height: 100%;
+  margin-right: 200px;
+}
+.viewport .geocoder_holder {
+  height: 0;
+  top: 120px;
+  position: absolute;
+  z-index: 3;
+  width: 100%;
+  text-align: center;
+  padding-right: 200px;
+  -webkit-box-sizing: padding-box;
+  -moz-box-sizing: padding-box;
+  box-sizing: padding-box;
+}
+.viewport .geocoder_holder .search_form {
+  padding: 20px;
+  display: inline;
+  background: white;
+  border-radius: 10px;
+}
+.viewport .map {
+  height: 100%;
+  background: green;
+}
+.viewport .sidebar {
+  z-index: 100;
+  float: right;
+  height: 100%;
+  width: 200px;
+  color: white;
+  overflow: auto;
+  background: black;
+}

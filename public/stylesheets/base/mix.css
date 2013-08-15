@@ -1,0 +1,16 @@
+/*@mixin inline-block{
+  display: inline-block;
+  *display: inline;
+  zoom: 1
+}*/
+/* for sliders building */
+/* no text elements select */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0){
+  .class{
+   .element{
+     display: inline-table;
+   }
+  }
+}
+*/
