@@ -28,6 +28,8 @@ localhost:3000
 https://github.com/the-teacher/izitech_task/blob/master/app/views/izi.haml
 
 
+Кофе
+
 ```
 public/javascripts/COFFEE/izi/*.coffee
 ```
@@ -37,6 +39,9 @@ https://github.com/the-teacher/izitech_task/blob/master/public/javascripts/COFFE
 https://github.com/the-teacher/izitech_task/blob/master/public/javascripts/COFFEE/izi/gmap_init.coffee
 
 https://github.com/the-teacher/izitech_task/blob/master/public/javascripts/COFFEE/izi/application.coffee
+
+Стили
+
 
 ```
 public/stylesheets/SCSS/izi/*.scss
