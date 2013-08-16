@@ -1,6 +1,11 @@
 $ ->
   do initGMap
 
+  $('a.bound').on 'click', ->
+    return false unless GMap.bound
+    GMap.bound.setVisible !GMap.bound.getVisible()
+    false
+
   $('.search_form').on 'click', '#find_it', ->
     input = $ '#address'
 
@@ -16,15 +21,6 @@ $ ->
           GMap.clean()
           GMap.map.setCenter position
           GMap.build_marker_group(position)
-          bound = GMap.bound_around_point(position, 100)
-
-          GMap.find.geocode
-            latLng: position
-            bounds: bound
-          , (results, status) ->
-            if status is google.maps.GeocoderStatus.OK
-              $('.sidebar').html (results.map (item) ->
-                "<p>#{item.formatted_address}</p>"
-              ).join ''
+          GMap.geocode_for_position(position)
       else
         log "Geocode was not successful for the following reason: #{status}"

@@ -27,6 +27,14 @@ html, body {
 .viewport .footer {
   bottom: 0;
 }
+.viewport a.bound {
+  color: white;
+  font-size: 9px;
+  position: absolute;
+  font-family: arial;
+  right: 5px;
+  bottom: 5px;
+}
 .viewport .map_holder {
   height: 100%;
   margin-right: 200px;

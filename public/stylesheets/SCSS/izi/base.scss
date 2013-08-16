@@ -27,6 +27,13 @@ html, body{
   .header{ top:    0; }
   .footer{ bottom: 0; }
 
+  a.bound{
+    color: white;
+    font-size: 9px;
+    position: absolute;
+    font-family: arial;
+    right: 5px; bottom: 5px;
+  }
   .map_holder{
     height:  100%;
     margin-right: 200px;

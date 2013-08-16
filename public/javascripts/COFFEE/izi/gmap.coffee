@@ -9,9 +9,9 @@ class @GMap
   @bound_around_point: (position, meters = 50) -> 
     meters /= 1000
 
-    lat   = position.lat()
-    lng   = position.lng()
-    coord = { lat: lat, lng: lng }
+    coord =
+      lat: position.lat()
+      lng: position.lng()
 
     lng_corr = meters / (Math.cos(coord['lat'] * Math.PI / 180) * 111.11) / 2
     lat_corr = meters / 111.11 / 2
@@ -112,6 +112,20 @@ class @GMap
 
     @init_marker_group_behaviour()
 
+  @geocode_for_position: (position) ->
+    bound = @bound_around_point(position, 100)
+
+    @find.geocode
+      latLng: position
+      bounds: bound
+    , (results, status) ->
+      if status is google.maps.GeocoderStatus.OK
+        $('.sidebar').html (results.map (item) ->
+          "<p>#{item.formatted_address}</p>"
+        ).join ''
+      else
+        log "Geocode was not successful for the following reason: #{status}"
+
   @init_marker_group_behaviour = ->
     @on @marker.marker, 'drag', (e) =>
       position = e.latLng
@@ -120,6 +134,12 @@ class @GMap
     @on @circle, 'drag', (e) =>
       position = e.latLng
       @marker_group_move(position)
+
+    @on @marker.marker, 'dragend', (e) =>
+      @geocode_for_position(e.latLng)
+
+    @on @circle, 'dragend', (e) =>
+      @geocode_for_position(e.latLng)
 
     @on @marker.bucket, 'click', (e) => do @clean
 

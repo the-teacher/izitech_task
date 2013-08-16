@@ -11,13 +11,4 @@
   GMap.on GMap.map, 'click', (e) ->
     GMap.clean()
     GMap.build_marker_group(e.latLng)
-    
-    GMap.find.geocode
-      latLng: e.latLng
-    , (results, status) ->
-      if status is google.maps.GeocoderStatus.OK
-        $('.sidebar').html (results.map (item) ->
-          "<p>#{item.formatted_address}</p>"
-        ).join ''
-      else
-        log "Geocode was not successful for the following reason: #{status}"
+    GMap.geocode_for_position(e.latLng)

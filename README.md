@@ -29,11 +29,11 @@ https://github.com/the-teacher/izitech_task/blob/master/app/views/izi.haml
 public/javascripts/COFFEE/izi/*.coffee
 ```
 
-https://github.com/the-teacher/izitech_task/blob/master/public/javascripts/COFFEE/izi/goo_map_init.coffee
+https://github.com/the-teacher/izitech_task/blob/master/public/javascripts/COFFEE/izi/gmap.coffee
 
-https://github.com/the-teacher/izitech_task/blob/master/public/javascripts/COFFEE/izi/goo_map.coffee
+https://github.com/the-teacher/izitech_task/blob/master/public/javascripts/COFFEE/izi/gmap_init.coffee
 
-https://github.com/the-teacher/izitech_task/blob/master/public/javascripts/COFFEE/izi/base.coffee
+https://github.com/the-teacher/izitech_task/blob/master/public/javascripts/COFFEE/izi/application.coffee
 
 ```
 public/stylesheets/SCSS/izi/*.scss
