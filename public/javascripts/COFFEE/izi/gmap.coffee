@@ -1,12 +1,12 @@
-class @GMap
-  @marker  = {}
-  @map     = null
-  @circle  = null
-  @bound   = null
-  @find    = null
+@GMap =
+  marker: {}
+  map:    null
+  circle: null
+  bound:  null
+  find:   null
 
   # pinch of magick
-  @bound_around_point: (position, meters = 50) -> 
+  bound_around_point: (position, meters = 50) -> 
     meters /= 1000
 
     coord =
@@ -21,7 +21,7 @@ class @GMap
 
     new google.maps.LatLngBounds(swLatLng, neLatLng)
 
-  @shift_x: (position, meters = 50) ->
+  shift_x: (position, meters = 50) ->
     meters /= 1000
 
     coord =
@@ -31,7 +31,7 @@ class @GMap
     lng_corr = meters / (Math.cos(coord['lat'] * Math.PI / 180) * 111.11) / 2
     swLatLng = new google.maps.LatLng(coord['lat'], coord['lng'] + lng_corr)
 
-  @shift_y: (position, meters = 50) ->
+  shift_y: (position, meters = 50) ->
     meters /= 1000
 
     coord =
@@ -42,27 +42,27 @@ class @GMap
     new google.maps.LatLng(coord['lat'] + lat_corr, coord['lng'])
 
   # Shortcats
-  @new_marker:    (params) -> new google.maps.Marker    params
-  @new_circle:    (params) -> new google.maps.Circle    params
-  @new_rectangle: (params) -> new google.maps.Rectangle params
+  new_marker:    (params) -> new google.maps.Marker    params
+  new_circle:    (params) -> new google.maps.Circle    params
+  new_rectangle: (params) -> new google.maps.Rectangle params
 
-  @on: (obj, event, fn) -> google.maps.event.addListener(obj, event, fn) if obj
+  on: (obj, event, fn) -> google.maps.event.addListener(obj, event, fn) if obj
 
   # Build Objects
-  @build_marker: (params) -> @marker.marker = @new_marker    params
-  @build_bucket: (params) -> @marker.bucket = @new_marker    params
-  @build_circle: (params) -> @circle        = @new_circle    params
-  @build_bound:  (params) -> @bound         = @new_rectangle params
+  build_marker: (params) -> @marker.marker = @new_marker    params
+  build_bucket: (params) -> @marker.bucket = @new_marker    params
+  build_circle: (params) -> @circle        = @new_circle    params
+  build_bound:  (params) -> @bound         = @new_rectangle params
 
   # Clean up
-  @clean: ->
+  clean: ->
     @marker.marker.setMap(null) if @marker.marker
     @marker.bucket.setMap(null) if @marker.bucket
     @circle.setMap(null)        if @circle
     @bound.setMap(null)         if @bound
     $('.sidebar').empty()
 
-  @marker_group_move = (position) ->
+  marker_group_move: (position) ->
     @bound.setBounds @bound_around_point(@marker.marker.position, 100)
     @marker.marker.setPosition(position)
     @circle.setCenter(position)
@@ -71,7 +71,7 @@ class @GMap
     _position = @shift_y _position, -110
     @marker.bucket.setPosition _position
 
-  @build_marker_group: (position) ->
+  build_marker_group: (position) ->
     @build_marker
       map:      @map
       position: position
@@ -112,7 +112,7 @@ class @GMap
 
     @init_marker_group_behaviour()
 
-  @geocode_for_position: (position) ->
+  geocode_for_position: (position) ->
     bound = @bound_around_point(position, 100)
 
     @find.geocode
@@ -126,7 +126,7 @@ class @GMap
       else
         log "Geocode was not successful for the following reason: #{status}"
 
-  @init_marker_group_behaviour = ->
+  init_marker_group_behaviour: ->
     @on @marker.marker, 'drag', (e) =>
       position = e.latLng
       @marker_group_move(position)
