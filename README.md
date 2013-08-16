@@ -11,6 +11,9 @@ bundle
 
 padrino start
 
+(padrino start -h hostname -p port)
+ 
+
 localhost:3000
 ```
 
